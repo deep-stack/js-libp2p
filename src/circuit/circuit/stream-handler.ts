@@ -80,8 +80,6 @@ export class StreamHandler {
    */
   close () {
     log('closing the stream')
-    void this.rest().sink([]).catch(err => {
-      log.error(err)
-    })
+    this.stream.close()
   }
 }
