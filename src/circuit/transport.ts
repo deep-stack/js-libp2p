@@ -176,7 +176,7 @@ export class Circuit implements Transport, Startable {
 
         // Overwrite connection close method to close underlying stream
         maConn.close = async () => {
-          streamHandler.close()
+          streamHandler.closeBaseStream()
         }
 
         const conn = await this.components.upgrader.upgradeInbound(maConn)
@@ -248,7 +248,7 @@ export class Circuit implements Transport, Startable {
 
       // Overwrite connection close method to close underlying stream
       maConn.close = async () => {
-        streamHandler.close()
+        streamHandler.closeBaseStream()
       }
 
       return await this.components.upgrader.upgradeOutbound(maConn)

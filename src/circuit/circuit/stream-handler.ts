@@ -80,6 +80,15 @@ export class StreamHandler {
    */
   close () {
     log('closing the stream')
+    this.rest().sink([]).catch(err => {
+      log.error(err)
+    })
+  }
+
+  /**
+   * Close underlying muxed stream
+   */
+  closeBaseStream  () {
     this.stream.close()
   }
 }
